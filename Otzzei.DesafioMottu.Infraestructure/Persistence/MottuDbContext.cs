@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OtzzeiDesafioMottu.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence
     public class MottuDbContext : DbContext
     {
         public MottuDbContext(DbContextOptions<MottuDbContext> options) : base(options) { }
+
+        public DbSet<Motorcycle> Motorcycles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
