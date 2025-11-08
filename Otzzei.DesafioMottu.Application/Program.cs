@@ -1,9 +1,17 @@
 using Otzzei.DesafioMottu.Infraestructure;
+using Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories;
+using OtzzeiDesafioMottu.Domain.Interfaces.IRepository;
+using OtzzeiDesafioMottu.Domain.Interfaces.IService;
+using OtzzeiDesafioMottu.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
+builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
+builder.Services.AddScoped<IMotorcycleNotificationRepository, MotorcycleNotificationRepository>();
 
 
 builder.Services.AddControllers();

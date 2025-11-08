@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories
 {
-    internal class MotorcycleRepository : IMotorcycleRepository
+    public class MotorcycleRepository : IMotorcycleRepository
     {
         private readonly MottuDbContext _context;
 

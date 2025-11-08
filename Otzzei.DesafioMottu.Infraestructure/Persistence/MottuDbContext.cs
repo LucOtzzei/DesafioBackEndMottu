@@ -13,6 +13,7 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence
         public MottuDbContext(DbContextOptions<MottuDbContext> options) : base(options) { }
 
         public DbSet<Motorcycle> Motorcycles { get; set; }
+        public DbSet<MotorcycleNotification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
