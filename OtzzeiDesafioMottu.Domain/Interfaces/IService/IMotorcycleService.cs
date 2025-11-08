@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OtzzeiDesafioMottu.Domain.Requests;
+using OtzzeiDesafioMottu.Domain.Responses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,7 @@ namespace OtzzeiDesafioMottu.Domain.Interfaces.IService
 {
     public interface IMotorcycleService
     {
+        Task<MotorcycleResponse> CreateAsync(CreateMotorcycleRequest request);
+        Task<IEnumerable<MotorcycleResponse>> GetAllAsync();
     }
 }

@@ -1,4 +1,7 @@
-﻿using OtzzeiDesafioMottu.Domain.Interfaces.IRepository;
+﻿using OtzzeiDesafioMottu.Domain.Entities;
+using OtzzeiDesafioMottu.Domain.Events;
+using OtzzeiDesafioMottu.Domain.Interfaces.IMessaging;
+using OtzzeiDesafioMottu.Domain.Interfaces.IRepository;
 using OtzzeiDesafioMottu.Domain.Interfaces.IService;
 using OtzzeiDesafioMottu.Domain.Requests;
 using OtzzeiDesafioMottu.Domain.Responses;
@@ -7,9 +10,9 @@ namespace OtzzeiDesafioMottu.Domain.Services
 {
     public class MotorcycleService : IMotorcycleService
     {
-        private readonly MotorcycleRepository _motoRepository;
+        private readonly IMotorcycleRepository _motoRepository;
         private readonly IEventPublisher _publisher;
-        public MotorcycleService(MotorcycleRepository motoRepository, IEventPublisher publisher)
+        public MotorcycleService(IMotorcycleRepository motoRepository, IEventPublisher publisher)
         {
             _motoRepository = motoRepository;
             _publisher = publisher;
@@ -20,7 +23,7 @@ namespace OtzzeiDesafioMottu.Domain.Services
             if (existing != null)
                 throw new InvalidOperationException("Placa já cadastrada.");
 
-            var moto = new Moto
+            var moto = new Motorcycle
             {
                 Ano = request.Ano,
                 Modelo = request.Modelo,
@@ -29,7 +32,7 @@ namespace OtzzeiDesafioMottu.Domain.Services
 
             await _motoRepository.AddAsync(moto);
 
-            await _publisher.Publish(new MotoCadastradaEvent
+            await _publisher.PublishAsync(new MotorcycleRegisteredEvent
             {
                 MotoId = moto.Id,
                 Ano = moto.Ano,
@@ -37,26 +40,22 @@ namespace OtzzeiDesafioMottu.Domain.Services
                 Placa = moto.Placa
             });
 
-            return new MotoResponse
+            return new MotorcycleResponse
             {
-                Id = moto.Id,
                 Ano = moto.Ano,
                 Modelo = moto.Modelo,
                 Placa = moto.Placa,
-                CreatedAt = moto.CreatedAt
             };
         }
 
-        public async Task<IEnumerable<MotoResponse>> GetAllAsync()
+        public async Task<IEnumerable<MotorcycleResponse>> GetAllAsync()
         {
             var motos = await _motoRepository.GetAllAsync();
-            return motos.Select(m => new MotoResponse
+            return motos.Select(m => new MotorcycleResponse
             {
-                Id = m.Id,
                 Ano = m.Ano,
                 Modelo = m.Modelo,
                 Placa = m.Placa,
-                CreatedAt = m.CreatedAt
             });
         }
     }

@@ -1,5 +1,7 @@
 using Otzzei.DesafioMottu.Infraestructure;
+using Otzzei.DesafioMottu.Infraestructure.Messaging;
 using Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories;
+using OtzzeiDesafioMottu.Domain.Interfaces.IMessaging;
 using OtzzeiDesafioMottu.Domain.Interfaces.IRepository;
 using OtzzeiDesafioMottu.Domain.Interfaces.IService;
 using OtzzeiDesafioMottu.Domain.Services;
@@ -12,6 +14,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
 builder.Services.AddScoped<IMotorcycleNotificationRepository, MotorcycleNotificationRepository>();
+builder.Services.AddScoped<IEventPublisher, RabbitMqEventPublisher>();
 
 
 builder.Services.AddControllers();
