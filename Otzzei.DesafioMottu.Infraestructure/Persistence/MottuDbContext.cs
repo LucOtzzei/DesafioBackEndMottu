@@ -14,6 +14,7 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence
 
         public DbSet<Motorcycle> Motorcycles { get; set; }
         public DbSet<MotorcycleNotification> Notifications { get; set; }
+        public DbSet<DeliveryMan> DeliveryMen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
