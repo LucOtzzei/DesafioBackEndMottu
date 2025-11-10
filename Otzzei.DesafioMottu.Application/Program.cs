@@ -15,6 +15,8 @@ builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
 builder.Services.AddScoped<IMotorcycleNotificationRepository, MotorcycleNotificationRepository>();
 builder.Services.AddScoped<IEventPublisher, RabbitMqEventPublisher>();
+builder.Services.AddScoped<IDeliveryManService, DeliveryManService>();
+builder.Services.AddScoped<IDeliveryManRepository, DeliveryManRepository>();
 
 
 builder.Services.AddControllers();
