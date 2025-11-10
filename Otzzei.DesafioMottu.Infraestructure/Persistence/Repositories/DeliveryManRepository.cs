@@ -19,6 +19,7 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories
         public async Task AddAsync(DeliveryMan driver)
         {
             await _context.DeliveryMen.AddAsync(driver);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<DeliveryMan>> GetAllAsync()
