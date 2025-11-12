@@ -12,6 +12,7 @@ namespace OtzzeiDesafioMottu.Domain.Interfaces.IRepository
         Task AddAsync(DeliveryMan driver);
         Task UpdateAsync(DeliveryMan driver);
         Task<DeliveryMan?> GetByCnpjAsync(string cnpj);
+        Task<DeliveryMan?> GetByIdAsync(Guid id);
         Task<DeliveryMan?> GetByCnhNumberAsync(string cnhNumber);
         Task<IEnumerable<DeliveryMan>> GetAllAsync();
     }

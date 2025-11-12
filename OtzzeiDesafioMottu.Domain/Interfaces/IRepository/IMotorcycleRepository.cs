@@ -11,6 +11,7 @@ namespace OtzzeiDesafioMottu.Domain.Interfaces.IRepository
     {
         Task<Motorcycle> AddAsync(Motorcycle moto);
         Task<Motorcycle?> GetByPlacaAsync(string placa);
+        Task<Motorcycle?> GetByIdAsync(Guid id);
         Task<IEnumerable<Motorcycle>> GetAllAsync();
     }
 }

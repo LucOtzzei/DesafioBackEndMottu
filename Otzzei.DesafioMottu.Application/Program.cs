@@ -19,6 +19,8 @@ builder.Services.AddScoped<IEventPublisher, RabbitMqEventPublisher>();
 builder.Services.AddScoped<IDeliveryManService, DeliveryManService>();
 builder.Services.AddScoped<IDeliveryManRepository, DeliveryManRepository>();
 builder.Services.AddScoped<IFileService, LocalStorageService>();
+builder.Services.AddScoped<IRentalService, RentalService>();
+builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 
 
 builder.Services.AddControllers();

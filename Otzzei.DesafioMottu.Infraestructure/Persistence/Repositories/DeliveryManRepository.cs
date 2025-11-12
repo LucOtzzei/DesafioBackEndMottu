@@ -41,5 +41,9 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories
         {
             await _context.SaveChangesAsync();
         }
+        public async Task<DeliveryMan?> GetByIdAsync(Guid id)
+        {
+            return await _context.DeliveryMen.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

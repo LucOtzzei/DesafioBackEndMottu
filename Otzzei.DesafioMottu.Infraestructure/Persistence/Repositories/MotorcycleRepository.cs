@@ -35,5 +35,10 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories
         {
             return await _context.Motorcycles.ToListAsync();
         }
+        public async Task<Motorcycle?> GetByIdAsync(Guid id)
+        {
+            return await _context.Motorcycles
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }
