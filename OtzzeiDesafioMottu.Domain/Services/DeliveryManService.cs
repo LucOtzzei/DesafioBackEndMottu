@@ -48,7 +48,6 @@ namespace OtzzeiDesafioMottu.Domain.Services
 
             return new DeliveryManResponse(driver);
         }
-        }
 
         public async Task<IEnumerable<DeliveryManResponse>> GetAllAsync()
         {
