@@ -9,9 +9,11 @@ namespace Otzzei.DesafioMottu.Application.Controllers
     public class DeliveryManController : ControllerBase
     {
         private readonly IDeliveryManService _deliveryManService;
-        public DeliveryManController(IDeliveryManService deliveryManService)
+        private readonly IFileService _fileService;
+        public DeliveryManController(IDeliveryManService deliveryManService, IFileService fileService)
         {
             _deliveryManService = deliveryManService;
+            _fileService = fileService;
         }
 
         [HttpPost]
@@ -36,5 +38,19 @@ namespace Otzzei.DesafioMottu.Application.Controllers
                 return NotFound();
             return Ok(deliveryMan);
         }
+
+        [HttpPut("{id}/update-cnh-image")]
+        public async Task<IActionResult> UpdateCnhImage(Guid id, IFormFile cnhImage)
+        {
+            if (cnhImage == null) return BadRequest("Image file is required.");
+
+            var filePath = await _fileService.SaveAsync(cnhImage.OpenReadStream(), cnhImage.FileName);
+            var request = new UpdateCnhImageRequest { DeliverymanId = id, CnhImagePath = filePath };
+
+            await _deliveryManService.UpdateCnhImageAsync(id, request);
+            return Ok("CNH image updated successfully.");
+        }
+
+
     }
 }

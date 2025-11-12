@@ -16,10 +16,12 @@ namespace OtzzeiDesafioMottu.Domain.Services
     {
         private readonly IDeliveryManRepository _deliveryManRepository;
         private readonly IValidator<DeliveryMan> _validator;
-        public DeliveryManService(IDeliveryManRepository deliveryManRepository, IValidator<DeliveryMan> validator)
+        private readonly IFileService _storage;
+        public DeliveryManService(IDeliveryManRepository deliveryManRepository, IValidator<DeliveryMan> validator, IFileService storage)
         {
             _deliveryManRepository = deliveryManRepository;
             _validator = validator;
+            _storage = storage;
         }
 
         public async Task<DeliveryManResponse> CreateAsync(CreateDeliveryManRequest request)
@@ -61,9 +63,18 @@ namespace OtzzeiDesafioMottu.Domain.Services
             return new DeliveryManResponse(deliveryMan);
         }
 
-        //TODO
-        /*public Task UpdateCnhImageAsync(Guid id, UpdateCnhImageRequest request)
+        public async Task UpdateCnhImageAsync(Guid id, UpdateCnhImageRequest request)
         {
-        }*/
+            var driver = (await _deliveryManRepository.GetAllAsync())
+                .FirstOrDefault(x => x.Id == id);
+
+            if (driver == null)
+                throw new KeyNotFoundException("Driver not found.");
+
+            // Atualiza a propriedade da entidade
+            driver.UpdateCnhImage(request.CnhImagePath);
+
+            await _deliveryManRepository.UpdateAsync(driver);
+        }
     }
 }

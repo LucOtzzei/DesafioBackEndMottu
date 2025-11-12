@@ -19,6 +19,7 @@ namespace OtzzeiDesafioMottu.Domain.Entities
         public CNHTypeEnum CnhType { get; private set; }
         public string? CnhImagePath { get; private set; }
         public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; private set; } = DateTime.UtcNow;
 
         public DeliveryMan(string identifier, string name, string cnpj, DateTime birthDate, string cnhNumber, CNHTypeEnum cnhType)
         {
@@ -30,9 +31,11 @@ namespace OtzzeiDesafioMottu.Domain.Entities
             CnhNumber = cnhNumber;
             CnhType = cnhType;
         }
-        public void UpdateCnhImage(string imagePath)
+        public void UpdateCnhImage(string cnhImagePath)
         {
-            CnhImagePath = imagePath;
+            CnhImagePath = cnhImagePath;
+            UpdatedAt = DateTime.UtcNow;
         }
+
     }
 }

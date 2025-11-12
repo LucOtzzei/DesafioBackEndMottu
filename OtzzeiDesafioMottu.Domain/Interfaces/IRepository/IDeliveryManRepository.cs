@@ -10,6 +10,7 @@ namespace OtzzeiDesafioMottu.Domain.Interfaces.IRepository
     public interface IDeliveryManRepository
     {
         Task AddAsync(DeliveryMan driver);
+        Task UpdateAsync(DeliveryMan driver);
         Task<DeliveryMan?> GetByCnpjAsync(string cnpj);
         Task<DeliveryMan?> GetByCnhNumberAsync(string cnhNumber);
         Task<IEnumerable<DeliveryMan>> GetAllAsync();

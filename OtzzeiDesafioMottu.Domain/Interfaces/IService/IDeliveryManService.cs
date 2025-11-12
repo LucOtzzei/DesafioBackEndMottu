@@ -13,6 +13,6 @@ namespace OtzzeiDesafioMottu.Domain.Interfaces.IService
         Task<DeliveryManResponse> CreateAsync(CreateDeliveryManRequest request);
         Task<IEnumerable<DeliveryManResponse>> GetAllAsync();
         Task<DeliveryManResponse?> GetByCnpjAsync(string cnpj);
-        //Task UpdateCnhImageAsync(Guid id, UpdateCnhImageRequest request);
+        Task UpdateCnhImageAsync(Guid id, UpdateCnhImageRequest request);
     }
 }

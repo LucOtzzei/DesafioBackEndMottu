@@ -36,5 +36,10 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence.Repositories
         {
             return await _context.DeliveryMen.FirstOrDefaultAsync(x => x.Cnpj == cnpj);
         }
+
+        public async Task UpdateAsync(DeliveryMan driver)
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
