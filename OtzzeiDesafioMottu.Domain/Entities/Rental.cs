@@ -11,13 +11,11 @@ namespace OtzzeiDesafioMottu.Domain.Entities
         public Guid Id { get; private set; } = Guid.NewGuid();
         public Guid MotorcycleId { get; private set; }
         public Guid DeliverymanId { get; private set; }
-        public Plan Plan { get; private set; }
+        public Plan? Plan { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime ExpectedEndDate { get; private set; }
         public DateTime? ActualEndDate { get; private set; }
         public decimal? TotalValue { get; private set; }
-
-        protected Rental() { }
 
         public Rental(Guid motorcycleId, Guid deliverymanId, Plan plan)
         {
