@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OtzzeiDesafioMottu.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,6 +27,6 @@ namespace OtzzeiDesafioMottu.Domain.Requests
         public string CnhNumber { get; set; } = null!;
 
         [Required]
-        public CNHType CnhType { get; set; }
+        public CNHTypeEnum CnhType { get; set; }
     }
 }
