@@ -10,8 +10,6 @@ namespace OtzzeiDesafioMottu.Domain.Requests
 {
     public class CreateDeliveryManRequest
     {
-        [Required]
-        public string Identifier { get; set; } = null!;
 
         [Required]
         public string Name { get; set; } = null!;

@@ -11,7 +11,6 @@ namespace OtzzeiDesafioMottu.Domain.Entities
     public class DeliveryMan
     {
         public Guid Id { get; private set; }
-        public string Identifier { get; private set; } = null!;
         public string Name { get; private set; } = null!;
         public string Cnpj { get; private set; } = null!;
         public DateTime BirthDate { get; private set; }
@@ -21,10 +20,9 @@ namespace OtzzeiDesafioMottu.Domain.Entities
         public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; private set; } = DateTime.UtcNow;
 
-        public DeliveryMan(string identifier, string name, string cnpj, DateTime birthDate, string cnhNumber, CNHTypeEnum cnhType)
+        public DeliveryMan(string name, string cnpj, DateTime birthDate, string cnhNumber, CNHTypeEnum cnhType)
         {
             Id = Guid.NewGuid();
-            Identifier = identifier;
             Name = name;
             Cnpj = cnpj;
             BirthDate = birthDate;

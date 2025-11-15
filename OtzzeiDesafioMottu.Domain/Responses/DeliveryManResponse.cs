@@ -10,7 +10,6 @@ namespace OtzzeiDesafioMottu.Domain.Responses
 {
     public class DeliveryManResponse
     {
-        public string Identifier { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string Cnpj { get; set; } = null!;
         public DateTime BirthDate { get; set; }
@@ -20,7 +19,6 @@ namespace OtzzeiDesafioMottu.Domain.Responses
 
         public DeliveryManResponse(DeliveryMan deliveryMan)
         {
-            Identifier = deliveryMan.Identifier;
             Name = deliveryMan.Name;
             Cnpj = deliveryMan.Cnpj;
             BirthDate = deliveryMan.BirthDate;
