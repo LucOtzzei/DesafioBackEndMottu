@@ -35,7 +35,6 @@ namespace OtzzeiDesafioMottu.Domain.Services
                 throw new InvalidOperationException("CNH already registered.");
 
             var driver = new DeliveryMan(
-                request.Identifier,
                 request.Name,
                 request.Cnpj,
                 request.BirthDate,
@@ -70,7 +69,6 @@ namespace OtzzeiDesafioMottu.Domain.Services
             if (driver == null)
                 throw new KeyNotFoundException("Driver not found.");
 
-            // Atualiza a propriedade da entidade
             driver.UpdateCnhImage(request.CnhImagePath);
 
             await _deliveryManRepository.UpdateAsync(driver);
