@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OtzzeiDesafioMottu.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Otzzei.DesafioMottu.Infraestructure.Persistence
 {
@@ -20,7 +15,22 @@ namespace Otzzei.DesafioMottu.Infraestructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MottuDbContext).Assembly);
+            modelBuilder.Entity<Rental>(entity =>
+            {
+                entity.OwnsOne(r => r.Plan, plan =>
+                {
+                    plan.Property(p => p.Days)
+                        .HasColumnName("PlanDays");
+
+                    plan.Property(p => p.DailyRate)
+                        .HasColumnName("PlanDailyRate")
+                        .HasColumnType("decimal(10,2)");
+
+                    plan.Property(p => p.EarlyReturnPenalty)
+                        .HasColumnName("PlanEarlyReturnPenalty")
+                        .HasColumnType("decimal(10,2)");
+                });
+            });
         }
     }
 }

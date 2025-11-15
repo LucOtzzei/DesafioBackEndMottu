@@ -17,6 +17,7 @@ namespace OtzzeiDesafioMottu.Domain.Entities
         public DateTime? ActualEndDate { get; private set; }
         public decimal? TotalValue { get; private set; }
 
+        public Rental() { }
         public Rental(Guid motorcycleId, Guid deliverymanId, Plan plan)
         {
             MotorcycleId = motorcycleId;

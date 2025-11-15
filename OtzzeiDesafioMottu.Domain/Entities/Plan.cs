@@ -12,6 +12,7 @@ namespace OtzzeiDesafioMottu.Domain.Entities
         public decimal DailyRate { get; private set; }
         public decimal? EarlyReturnPenalty { get; private set; }
 
+        public Plan() { }
         public Plan(int days, decimal dailyRate, decimal? earlyReturnPenalty = null)
         {
             Days = days;

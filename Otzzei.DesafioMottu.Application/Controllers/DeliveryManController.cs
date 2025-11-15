@@ -20,7 +20,7 @@ namespace Otzzei.DesafioMottu.Application.Controllers
         public async Task<IActionResult> Create([FromBody] CreateDeliveryManRequest request)
         {
             var driver = await _deliveryManService.CreateAsync(request);
-            return CreatedAtAction(nameof(GetByCnpj), new { cnpj = driver.Cnpj }, driver);
+            return CreatedAtAction(nameof(GetByCnpj), new { deliveryManCnpj = driver.Cnpj }, driver);
         }
 
         [HttpGet]
